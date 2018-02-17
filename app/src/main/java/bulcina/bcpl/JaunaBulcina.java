@@ -19,6 +19,7 @@ import android.widget.Toast;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Locale;
 
 public class JaunaBulcina extends AppCompatActivity{
 
@@ -46,7 +47,7 @@ public class JaunaBulcina extends AppCompatActivity{
 
         context = getApplicationContext();
 
-        setTitle("Jauna bulciņa");
+        setTitle(R.string.title_jauna_bulcina);
 
         ibtnAttels = findViewById(R.id.jauna_bulc_ibtn_attels);
         etBulcNos = findViewById(R.id.jauna_bulc_et_nos);
@@ -78,12 +79,12 @@ public class JaunaBulcina extends AppCompatActivity{
             bulc_id = getIntent().getExtras().getInt("bulc_id");
         }
         catch (NullPointerException npe){
-            Log.e("BCPL","Nevarēja iegūt bulc_id.", npe);
+            Log.e("BCPL","Nevareja iegut bulc_id.", npe);
         }
 
         if (bulc_id > 0){
 
-            setTitle("Bulciņas rediģēšana");
+            setTitle(R.string.title_bulcinas_redigesana);
 
             db = BulcinaDatabaseHelper.getInstance(this);
 
@@ -92,9 +93,9 @@ public class JaunaBulcina extends AppCompatActivity{
             cursor.moveToFirst();
 
             String strBulcNos = cursor.getString(cursor.getColumnIndexOrThrow(BulcinaDatabaseHelper.BULCINA_COLUMN_NOSAUKUMS));
-            String strPasizmaksa = String.format("%.2f", cursor.getDouble(cursor.getColumnIndexOrThrow(BulcinaDatabaseHelper.BULCINA_COLUMN_PASIZMAKSA)));
-            String strRealizacija = String.format("%.2f", cursor.getDouble(cursor.getColumnIndexOrThrow(BulcinaDatabaseHelper.BULCINA_COLUMN_REALIZACIJA)));
-            String strNerealizetais = String.format("%.2f", cursor.getDouble(cursor.getColumnIndexOrThrow(BulcinaDatabaseHelper.BULCINA_COLUMN_NEREALIZETAIS)));
+            String strPasizmaksa = String.format(Locale.US,"%.2f", cursor.getDouble(cursor.getColumnIndexOrThrow(BulcinaDatabaseHelper.BULCINA_COLUMN_PASIZMAKSA)));
+            String strRealizacija = String.format(Locale.US,"%.2f", cursor.getDouble(cursor.getColumnIndexOrThrow(BulcinaDatabaseHelper.BULCINA_COLUMN_REALIZACIJA)));
+            String strNerealizetais = String.format(Locale.US,"%.2f", cursor.getDouble(cursor.getColumnIndexOrThrow(BulcinaDatabaseHelper.BULCINA_COLUMN_NEREALIZETAIS)));
 
             try {
                 attels = cursor.getBlob(cursor.getColumnIndexOrThrow(BulcinaDatabaseHelper.BULCINA_COLUMN_ATTELS));
@@ -106,7 +107,7 @@ public class JaunaBulcina extends AppCompatActivity{
                 }
             }
             catch (Exception e){
-                Log.e("BCPL","Kļūda attēla parādīšanā.",e);
+                Log.e("BCPL","Kluda attela paradisana.",e);
             }
             cursor.close();
 
@@ -126,11 +127,11 @@ public class JaunaBulcina extends AppCompatActivity{
 
 
         if(TextUtils.isEmpty(strBulcNos)){
-            etBulcNos.setError("Bulciņas nosaukums nevar būt tukšs.");
+            etBulcNos.setError(getString(R.string.kluda_nav_nosaukuma));
         }
         else {
             if(TextUtils.isEmpty(strPasizmaksa) || TextUtils.isEmpty(strRealizacija) || TextUtils.isEmpty(strNerealizetais)){
-                strToast = "Naudas vērtības nevar būt tukšas.";
+                strToast = getString(R.string.kluda_nav_naudas);
                 toast = Toast.makeText(context,strToast,d);
                 toast.show();
             }
@@ -140,12 +141,12 @@ public class JaunaBulcina extends AppCompatActivity{
                     double realizacija = Double.valueOf(strRealizacija);
                     double nerealizetais = Double.valueOf(strNerealizetais);
                     if (pasizmaksa>=realizacija){
-                        strToast = "Bulciņas cepšanas izmaksām jābūt mazākām par cenu.";
+                        strToast = getString(R.string.kluda_pasizmaksa_lielaka_par_realizaciju);
                         toast = Toast.makeText(context,strToast,d);
                         toast.show();
                     }
                     else if (nerealizetais>=pasizmaksa){
-                        strToast = "Bulciņas cepšanas izmaksām jābūt lielākām par pārpalikuma cenu.";
+                        strToast = getString(R.string.kluda_nerealizetais_lielaks_par_pasizmaksu);
                         toast = Toast.makeText(context,strToast,d);
                         toast.show();
                     }
@@ -153,12 +154,12 @@ public class JaunaBulcina extends AppCompatActivity{
                         if(db.updateBulcina(bulc_id,strBulcNos,pasizmaksa,realizacija,nerealizetais,attels)){
                             db.updatePasreizejoPrognozi(bulc_id,1);
                             db.updatePasreizejoPrognozi(bulc_id,0);
-                            strToast = "Bulciņas rediģēšana ir veiksmīga.";
+                            strToast = getString(R.string.pazinojums_bulcina_redigesana);
                             toast = Toast.makeText(context,strToast,d);
                             toast.show();
                         }
                         else {
-                            strToast = "Bulciņas rediģēšana nav veiksmīga.";
+                            strToast = getString(R.string.pazinojums_bulcina_redigesana_neveiksmiga);
                             toast = Toast.makeText(context,strToast,d);
                             toast.show();
                         }
@@ -166,12 +167,12 @@ public class JaunaBulcina extends AppCompatActivity{
                     }
                     else{
                         if(db.addBulcina(strBulcNos,pasizmaksa,realizacija,nerealizetais,attels)){
-                            strToast = "Bulciņas ievade ir veiksmīga.";
+                            strToast = getString(R.string.pazinojums_bulcina_ievade);
                             toast = Toast.makeText(context,strToast,d);
                             toast.show();
                         }
                         else {
-                            strToast = "Bulciņas ievade nav veiksmīga.";
+                            strToast = getString(R.string.pazinojums_bulcina_ievade_neveiksmiga);
                             toast = Toast.makeText(context,strToast,d);
                             toast.show();
                         }
@@ -179,7 +180,7 @@ public class JaunaBulcina extends AppCompatActivity{
                     }
                 }
                 catch (NumberFormatException nfs){
-                    strToast = "Ievadīta nepareiza naudas vērtība!";
+                    strToast = getString(R.string.kluda_nepareiza_nauda);
                     toast = Toast.makeText(context,strToast,Toast.LENGTH_LONG);
                     toast.show();
                 }
@@ -209,7 +210,7 @@ public class JaunaBulcina extends AppCompatActivity{
                         attels = noBitmapUzByteArray(bitmap);
                     }
                     catch (Exception e){
-                        Log.e("BCPL","Kļūda attēla uzstādīšanā.",e);
+                        Log.e("BCPL","Kluda attela uzstadisana.",e);
                     }
                 }
                 break;
@@ -229,7 +230,7 @@ public class JaunaBulcina extends AppCompatActivity{
             }
         }
         catch (NullPointerException npe){
-            Log.e("BCPL","Kļūda lasot ievades plūsmu.",npe);
+            Log.e("BCPL","Kluda lasot ievades plusmu.",npe);
         }
 
         return byteBuffer.toByteArray();

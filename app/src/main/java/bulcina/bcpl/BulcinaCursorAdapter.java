@@ -48,13 +48,13 @@ public class BulcinaCursorAdapter extends ResourceCursorAdapter {
         String strPrognoze;
 
         if (prognoze == 0){
-            strPrognoze = "Nav pietiekamu datu";
+            strPrognoze = context.getString(R.string.prognoze_nav_pietiekamu_datu);
         }
         else if (prognoze<0){
-            strPrognoze = "Nav ieteicams cept";
+            strPrognoze = context.getString(R.string.prognoze_nav_ieteicams_cept);
         }
         else {
-            strPrognoze = "Cepam: " + String.valueOf(Math.round(prognoze));
+            strPrognoze = context.getString(R.string.prognoze_cepam) + " " + String.valueOf(Math.round(prognoze));
         }
 
         try
@@ -71,7 +71,7 @@ public class BulcinaCursorAdapter extends ResourceCursorAdapter {
             c.close();
         }
         catch (Exception e){
-            Log.e("BCPL", "Kļūda attēla parādīšanā bulciņai: " + cursor.getString(bulcNos_index),e);
+            Log.e("BCPL", "Kluda attela paradisana bulcinai: " + cursor.getString(bulcNos_index),e);
         }
 
         tvBulcNos.setText(cursor.getString(bulcNos_index));

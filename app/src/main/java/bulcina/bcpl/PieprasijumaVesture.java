@@ -30,7 +30,7 @@ public class PieprasijumaVesture extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pieprasijuma_vesture);
-        setTitle("Pieprasījuma vēsture");
+        setTitle(R.string.title_pieprasijuma_vesture);
         db = BulcinaDatabaseHelper.getInstance(this);
         list = findViewById(R.id.piepr_list);
         bulc_id = getIntent().getExtras().getInt("bulc_id");
@@ -56,7 +56,7 @@ public class PieprasijumaVesture extends AppCompatActivity{
 
         SearchManager manager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchView search = (SearchView) menu.findItem(R.id.action_search).getActionView();
-        search.setQueryHint("datums");
+        search.setQueryHint(getString(R.string.teksts_datums));
         search.setSearchableInfo(manager.getSearchableInfo(getComponentName()));
         search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override

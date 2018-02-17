@@ -37,7 +37,7 @@ public class PieprasijumaIevadesDialogs extends DialogFragment{
         bulc_id = getArguments().getInt("bulc_id");
 
         dialog.setContentView(view);
-        dialog.setTitle("Ievadiet pieprasījumu.");
+        dialog.setTitle(R.string.title_pieprasijuma_ievade);
 
         rbDarbadiena = view.findViewById(R.id.piepr_ievade_dialogs_rbtn_darb);
         rbBrivdiena = view.findViewById(R.id.piepr_ievade_dialogs_rbtn_briv);
@@ -92,7 +92,7 @@ public class PieprasijumaIevadesDialogs extends DialogFragment{
         int d = Toast.LENGTH_SHORT;
 
         if(TextUtils.isEmpty(strPieprasijums)){
-            etPieprasijums.setError("Pieprasījums nevar būt tukšs.");
+            etPieprasijums.setError(getString(R.string.kluda_nav_pieprasijuma));
         }
         else {
             try {
@@ -106,13 +106,13 @@ public class PieprasijumaIevadesDialogs extends DialogFragment{
                 }
 
                 db.addPieprasijums(pieprasijums, darbadiena, bulc_id);
-                strToast = "Pieprasījuma ievade ir veiksmīga.";
+                strToast = getString(R.string.pazinojums_pieprasijums_ievade);
                 toast = Toast.makeText(context,strToast,d);
                 toast.show();
                 dismiss();
             }
             catch (NumberFormatException nfs){
-                strToast = "Ievadīta nepareiza naudas vērtība!";
+                strToast = getString(R.string.kluda_nepareiza_nauda);
                 toast = Toast.makeText(context,strToast,d);
                 toast.show();
             }

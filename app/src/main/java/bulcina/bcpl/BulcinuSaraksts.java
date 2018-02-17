@@ -23,7 +23,7 @@ public class BulcinuSaraksts extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bulcinu_saraksts);
-        setTitle("Bulciņu saraksts");
+        setTitle(R.string.title_bulcinu_saraksts);
         db = BulcinaDatabaseHelper.getInstance(this);
         list = findViewById(R.id.bulc_list);
 

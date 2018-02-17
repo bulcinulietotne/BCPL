@@ -40,7 +40,7 @@ public class PieprasijumaDzesanasDialogs extends DialogFragment{
 
         dialog.setContentView(view);
 
-        tvZinojums.setText("Vai tiešām vēlaties izdzēst pieprasījuma ierakstu?");
+        tvZinojums.setText(R.string.dialoga_teksts_pieprasijuma_dzesana);
 
         btnAtcelt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,7 +78,7 @@ public class PieprasijumaDzesanasDialogs extends DialogFragment{
 
         }
 
-        strToast = "Pieprasījuma ieraksts tika izdzēsts.";
+        strToast = getString(R.string.pazinojums_pieprasijums_izdzests);
         toast = Toast.makeText(context,strToast,d);
         toast.show();
     }

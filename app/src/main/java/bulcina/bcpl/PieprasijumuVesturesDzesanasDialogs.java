@@ -40,7 +40,7 @@ public class PieprasijumuVesturesDzesanasDialogs extends DialogFragment{
         btnDzest = view.findViewById(R.id.dzes_dialogs_btn_dzest);
         tvZinojums = view.findViewById(R.id.dzes_dialogs_tv_zinojums);
 
-        tvZinojums.setText("Vai tiešām vēlaties dzēst visu bulciņas pieprasījuma vēsturi?");
+        tvZinojums.setText(R.string.dialoga_teksts_pieprasijuma_dzesana_viss);
 
         btnAtcelt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,7 +54,7 @@ public class PieprasijumuVesturesDzesanasDialogs extends DialogFragment{
             public void onClick(View view) {
 
                 if (!parbaude){
-                    tvZinojums.setText("Tiks neatgriezeniski izdzēsti visi bulciņas pieprasījuma ieraksti!");
+                    tvZinojums.setText(R.string.dialoga_teksts_pieprasijuma_dzesana_viss_apstiprinajums);
                     parbaude = true;
                 }
                 else {
@@ -86,7 +86,7 @@ public class PieprasijumuVesturesDzesanasDialogs extends DialogFragment{
 
         }
 
-        strToast = "Pieprasījuma vēsture tika izdzēsta.";
+        strToast = getString(R.string.pazinojums_pieprasijuma_vesture_izdzesta);
         toast = Toast.makeText(context,strToast,d);
         toast.show();
     }

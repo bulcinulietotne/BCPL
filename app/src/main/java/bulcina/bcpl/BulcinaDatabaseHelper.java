@@ -89,7 +89,7 @@ public class BulcinaDatabaseHelper extends SQLiteOpenHelper{
             return true;
         }
         catch (Exception e){
-            Log.e("BCPL","Kļūda bulciņas pievienošanā.",e);
+            Log.e("BCPL","Kluda bulcinas pievienosana.",e);
             return false;
         }
     }
@@ -207,7 +207,7 @@ public class BulcinaDatabaseHelper extends SQLiteOpenHelper{
             db.update(TABLE_BULCINA, bulcValues, where, new String[] { Integer.toString(bulcina_id) });
         }
         catch (Exception e){
-            Log.e("BCPL","Kļūda bulciņas rediģēšanā",e);
+            Log.e("BCPL","Kluda bulcinas redigesana",e);
             return false;
         }
         return true;

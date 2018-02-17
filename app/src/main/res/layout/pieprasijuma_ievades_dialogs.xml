@@ -15,7 +15,7 @@
         android:layout_marginTop="4dp"
         android:ems="10"
         android:fontFamily="@font/roboto"
-        android:hint="Pieprasījums"
+        android:hint="@string/teksts_pieprasijums"
         android:inputType="number"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,7 +32,7 @@
         android:layout_marginTop="8dp"
         android:fontFamily="@font/roboto"
         android:onClick="onRadioButtonClicked"
-        android:text="Darbadiena"
+        android:text="@string/teksts_poga_darbadiena"
         app:layout_constraintEnd_toStartOf="@+id/piepr_ievade_dialogs_rbtn_briv"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/piepr_ievade_dialogs_et_piepr" />
@@ -46,7 +46,7 @@
         android:layout_marginTop="8dp"
         android:fontFamily="@font/roboto"
         android:onClick="onRadioButtonClicked"
-        android:text="Brīvdiena"
+        android:text="@string/teksts_poga_brivdiena"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/piepr_ievade_dialogs_rbtn_darb"
         app:layout_constraintTop_toBottomOf="@+id/piepr_ievade_dialogs_et_piepr" />
@@ -59,11 +59,10 @@
         android:layout_marginTop="8dp"
         android:background="@color/RTUColorPrimary"
         android:fontFamily="@font/roboto"
-        android:text="Atcelt"
+        android:text="@string/teksts_poga_atcelt"
         android:textColor="@android:color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/piepr_ievade_dialogs_rbtn_darb"
-        android:layout_marginLeft="8dp" />
+        app:layout_constraintTop_toBottomOf="@+id/piepr_ievade_dialogs_rbtn_darb" />
 
     <Button
         android:id="@+id/piepr_ievade_dialogs_btn_saglabat"
@@ -73,9 +72,8 @@
         android:layout_marginTop="8dp"
         android:background="@color/RTUColorPrimary"
         android:fontFamily="@font/roboto"
-        android:text="Saglabāt"
+        android:text="@string/teksts_poga_saglabat"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/piepr_ievade_dialogs_rbtn_briv"
-        android:layout_marginRight="8dp" />
+        app:layout_constraintTop_toBottomOf="@+id/piepr_ievade_dialogs_rbtn_briv" />
 </android.support.constraint.ConstraintLayout>

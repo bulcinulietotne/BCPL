@@ -15,6 +15,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.Locale;
+
 
 public class BulcinaDetails extends AppCompatActivity{
 
@@ -38,7 +40,7 @@ public class BulcinaDetails extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bulcina_details);
 
-        setTitle("Bulciņas informācija");
+        setTitle(R.string.title_bulcina_details);
 
         ivAttels = findViewById(R.id.bulc_det_image);
         tvBulcNos = findViewById(R.id.bulc_det_tv_nos);
@@ -74,7 +76,7 @@ public class BulcinaDetails extends AppCompatActivity{
             bulc_id = getIntent().getExtras().getInt("bulc_id");
         }
         catch (NullPointerException npe){
-            Log.e("BCPL","Kļūda bulc_id iegūšanā.",npe);
+            Log.e("BCPL","Kluda bulc_id iegusana.",npe);
         }
     }
 
@@ -86,9 +88,9 @@ public class BulcinaDetails extends AppCompatActivity{
         cursor.moveToFirst();
 
         String strBulcNos = cursor.getString(cursor.getColumnIndexOrThrow(BulcinaDatabaseHelper.BULCINA_COLUMN_NOSAUKUMS));
-        String strPasizmaksa = String.format("%.2f €",cursor.getDouble(cursor.getColumnIndexOrThrow(BulcinaDatabaseHelper.BULCINA_COLUMN_PASIZMAKSA)));
-        String strRealizacija = String.format("%.2f €",cursor.getDouble(cursor.getColumnIndexOrThrow(BulcinaDatabaseHelper.BULCINA_COLUMN_REALIZACIJA)));
-        String strNerealizetais = String.format("%.2f €",cursor.getDouble(cursor.getColumnIndexOrThrow(BulcinaDatabaseHelper.BULCINA_COLUMN_NEREALIZETAIS)));
+        String strPasizmaksa = String.format(Locale.US,"%.2f €",cursor.getDouble(cursor.getColumnIndexOrThrow(BulcinaDatabaseHelper.BULCINA_COLUMN_PASIZMAKSA)));
+        String strRealizacija = String.format(Locale.US,"%.2f €",cursor.getDouble(cursor.getColumnIndexOrThrow(BulcinaDatabaseHelper.BULCINA_COLUMN_REALIZACIJA)));
+        String strNerealizetais = String.format(Locale.US,"%.2f €",cursor.getDouble(cursor.getColumnIndexOrThrow(BulcinaDatabaseHelper.BULCINA_COLUMN_NEREALIZETAIS)));
 
         try {
             byte[] attels = cursor.getBlob(cursor.getColumnIndexOrThrow(BulcinaDatabaseHelper.BULCINA_COLUMN_ATTELS));
@@ -99,7 +101,7 @@ public class BulcinaDetails extends AppCompatActivity{
             }
         }
         catch (Exception e){
-            Log.e("BCPL","Kļūda attēla parādīšanā.",e);
+            Log.e("BCPL","Kluda attela paradisana.",e);
         }
         cursor.close();
 

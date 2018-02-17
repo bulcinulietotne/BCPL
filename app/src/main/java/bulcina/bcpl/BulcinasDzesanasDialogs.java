@@ -39,7 +39,7 @@ public class BulcinasDzesanasDialogs extends DialogFragment{
         btnDzest = view.findViewById(R.id.dzes_dialogs_btn_dzest);
         tvZinojums = view.findViewById(R.id.dzes_dialogs_tv_zinojums);
 
-        tvZinojums.setText("Vai tiešām vēlaties dzēst bulciņu?");
+        tvZinojums.setText(R.string.dialoga_teksts_bulcinas_dzesana);
 
         btnAtcelt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,7 +53,7 @@ public class BulcinasDzesanasDialogs extends DialogFragment{
             public void onClick(View view) {
 
                 if (!parbaude){
-                    tvZinojums.setText("Bulcinas dzēšana izdzēsīs visus tās pieprasījuma ierakstus!");
+                    tvZinojums.setText(R.string.dialoga_teksts_bulcinas_dzesana_apstiprinajums);
                     parbaude = true;
                 }
                 else {
@@ -74,7 +74,7 @@ public class BulcinasDzesanasDialogs extends DialogFragment{
         db.deleteBulcina(bulcina_id);
         getActivity().finish();
 
-        strToast = "Bulciņa tika izdzēsta.";
+        strToast = getString(R.string.pazinojums_bulcina_izdzesta);
         toast = Toast.makeText(context,strToast,d);
         toast.show();
     }
