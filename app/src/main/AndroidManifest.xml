@@ -26,6 +26,9 @@
         <activity android:name=".PieprasijumaVesture"
             android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".BulcinuParskats"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 </manifest>

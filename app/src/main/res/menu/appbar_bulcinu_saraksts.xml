@@ -5,4 +5,16 @@
         android:icon="@android:drawable/ic_menu_add"
         app:showAsAction="always"
         android:title="" />
+    <item
+        android:id="@+id/action_atvert_parskatu"
+        android:title="@string/appbar_item_parskats"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_export"
+        android:title="@string/appbar_item_export"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_import"
+        android:title="@string/appbar_item_import"
+        app:showAsAction="never" />
 </menu>

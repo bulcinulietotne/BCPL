@@ -1,58 +1,70 @@
 <resources>
     <string name="app_name">BCPL</string>
-    
-    <string name="title_bulcina_details">Bulciņas informācija</string>
-    <string name="title_bulcinu_saraksts">Bulciņu saraksts</string>
-    <string name="title_jauna_bulcina">Jauna bulciņa</string>
-    <string name="title_bulcinas_redigesana">Bulciņas rediģēšana</string>
-    <string name="title_pieprasijuma_ievade">Ievadiet pieprasījumu</string>
-    <string name="title_pieprasijuma_vesture">Pieprasījuma vēsture</string>
-    
-    <string name="dialoga_teksts_bulcinas_dzesana">Vai tiešām vēlaties dzēst bulciņu?</string>
-    <string name="dialoga_teksts_bulcinas_dzesana_apstiprinajums">Bulcinas dzēšana izdzēsīs visus tās pieprasījuma ierakstus!</string>
-    <string name="dialoga_teksts_pieprasijuma_dzesana">Vai tiešām vēlaties izdzēst pieprasījuma ierakstu?</string>
-    <string name="dialoga_teksts_pieprasijuma_dzesana_viss">Vai tiešām vēlaties dzēst visu bulciņas pieprasījuma vēsturi?</string>
-    <string name="dialoga_teksts_pieprasijuma_dzesana_viss_apstiprinajums">Tiks izdzēsti visi bulciņas pieprasījuma ieraksti!</string>
-    
-    <string name="pazinojums_bulcina_izdzesta">Bulciņa tika izdzēsta</string>
-    <string name="pazinojums_bulcina_redigesana">Bulciņas rediģēšana ir veiksmīga</string>
-    <string name="pazinojums_bulcina_redigesana_neveiksmiga">Bulciņas rediģēšana nav veiksmīga</string>
-    <string name="pazinojums_bulcina_ievade">Bulciņas ievade ir veiksmīga</string>
-    <string name="pazinojums_bulcina_ievade_neveiksmiga">Bulciņas ievade nav veiksmīga</string>
-    <string name="pazinojums_pieprasijums_izdzests">Pieprasījuma ieraksts tika izdzēsts</string>
-    <string name="pazinojums_pieprasijums_ievade">Pieprasījuma ievade ir veiksmīga</string>
-    <string name="pazinojums_pieprasijuma_vesture_izdzesta">Pieprasījuma vēsture tika izdzēsta</string>
-    
-    <string name="prognoze_nav_pietiekamu_datu">Nav pietiekamu datu</string>
-    <string name="prognoze_nav_ieteicams_cept">Nav ieteicams cept</string>
-    <string name="prognoze_cepam">Cepam:</string>
-    
-    <string name="kluda_nav_nosaukuma">Bulciņas nosaukums nevar būt tukšs</string>
-    <string name="kluda_nav_naudas">Naudas vērtības nevar būt tukšas</string>
-    <string name="kluda_pasizmaksa_lielaka_par_realizaciju">Bulciņas cepšanas izmaksām jābūt mazākām par cenu</string>
-    <string name="kluda_nerealizetais_lielaks_par_pasizmaksu">Bulciņas cepšanas izmaksām jābūt lielākām par pārpalikuma cenu</string>
-    <string name="kluda_nepareiza_nauda">Ievadīta nepareiza naudas vērtība!</string>
-    <string name="kluda_nav_pieprasijuma">Pieprasījums nevar būt tukšs</string>
-    
-    <string name="teksts_pieprasijums">Pieprasījums</string>
-    <string name="teksts_datums">Datums</string>
-    <string name="teksts_nosaukums">Nosaukums</string>
-    <string name="teksts_cepsanas_izmaksas">Cepšanas izmaksas</string>
-    <string name="teksts_cena">Cena</string>
-    <string name="teksts_parpalikuma_cena">Pārpalikuma cena</string>
-    <string name="teksts_label_nerealizetais">Pārpalikums:</string>
-    <string name="teksts_label_realizacija">Cena:</string>
-    <string name="teksts_label_pasizmaksa">Cepšana:</string>
-    <string name="teksts_poga_dzest">Dzēst</string>
-    <string name="teksts_poga_saglabat">Saglabāt</string>
-    <string name="teksts_poga_atcelt">Atcelt</string>
-    <string name="teksts_poga_brivdiena">Brīvdiena</string>
-    <string name="teksts_poga_darbadiena">Darbadiena</string>
-    <string name="teksts_poga_ievadit_pieprasijumu">Ievadīt pieprasījumu</string>
-    <string name="teksts_poga_apskatit_vesturi">Apskatīt pieprasījuma vēsturi</string>
-    <string name="teksts_kolonna_pieprasijuma_id">Piepr_id</string>
-    <string name="teksts_kolonna_datums">Datums</string>
-    <string name="teksts_kolonna_pieprasijums">Piepr</string>
-    <string name="teksts_kolonna_prognoze">Progn</string>
-    <string name="teksts_kolonna_darbadiena">Darbad</string>
+
+    <string name="title_bulcina_details">Pastries information</string>
+    <string name="title_bulcinu_saraksts">List of pastries</string>
+    <string name="title_jauna_bulcina">New sweet roll</string>
+    <string name="title_bulcinas_redigesana">Edit</string>
+    <string name="title_pieprasijuma_ievade">Enter demand</string>
+    <string name="title_pieprasijuma_vesture">Demand history</string>
+    <string name="title_bulcinu_parskats">Pastry overview</string>
+
+    <string name="appbar_item_export">Export</string>
+    <string name="appbar_item_import">Import</string>
+    <string name="appbar_item_parskats">Overview</string>
+
+    <string name="dialoga_teksts_bulcinas_dzesana">Are you sure you want to delete the sweet roll?</string>
+    <string name="dialoga_teksts_bulcinas_dzesana_apstiprinajums">Sweet roll deletion will erase all of its demand entries!</string>
+    <string name="dialoga_teksts_pieprasijuma_dzesana">Are you sure you want to delete demand?</string>
+    <string name="dialoga_teksts_pieprasijuma_dzesana_viss">Are you sure you want to delete all demand history of sweet roll?</string>
+    <string name="dialoga_teksts_pieprasijuma_dzesana_viss_apstiprinajums">All sweet roll demand entries will be deleted!</string>
+
+    <string name="pazinojums_bulcina_izdzesta">Sweet roll was deleted!</string>
+    <string name="pazinojums_bulcina_redigesana">Editing is successful!</string>
+    <string name="pazinojums_bulcina_redigesana_neveiksmiga">Editing is not successful!</string>
+    <string name="pazinojums_bulcina_ievade">Input is successful!</string>
+    <string name="pazinojums_bulcina_ievade_neveiksmiga">Input is not successful!</string>
+    <string name="pazinojums_pieprasijums_izdzests">Demand record was deleted!</string>
+    <string name="pazinojums_pieprasijums_ievade">Demand input is successful!</string>
+    <string name="pazinojums_pieprasijuma_vesture_izdzesta">Demand history was deleted!</string>
+    <string name="pazinojums_eksportesana">Export is successful!</string>
+    <string name="pazinojums_eksportesana_neveiksmiga">Export is not successful!</string>
+    <string name="pazinojums_importesana">Import is successful!</string>
+    <string name="pazinojums_importesana_neveiksmiga">Import is not successful!</string>
+
+    <string name="prognoze_nav_pietiekamu_datu">Missing data!</string>
+    <string name="prognoze_nav_ieteicams_cept">Not recommended to bake!</string>
+    <string name="prognoze_cepam">Bake:</string>
+
+    <string name="kluda_nav_nosaukuma">Sweet roll name can not be empty!</string>
+    <string name="kluda_nav_naudas">The value of money can not be empty!</string>
+    <string name="kluda_pasizmaksa_lielaka_par_realizaciju">Baking costs have to be lower than the price!</string>
+    <string name="kluda_nerealizetais_lielaks_par_pasizmaksu">Baking costs have to be higher than the surplus price!</string>
+    <string name="kluda_nepareiza_nauda">Wrong money value!</string>
+    <string name="kluda_nav_pieprasijuma">Demand can not be empty!</string>
+
+    <string name="teksts_pieprasijums">Demand</string>
+    <string name="teksts_datums">Date</string>
+    <string name="teksts_nosaukums">Name</string>
+    <string name="teksts_cepsanas_izmaksas">Baking costs</string>
+    <string name="teksts_cena">Price</string>
+    <string name="teksts_parpalikuma_cena">Surplus price</string>
+    <string name="teksts_label_nerealizetais">Surplus:</string>
+    <string name="teksts_label_realizacija">Price:</string>
+    <string name="teksts_label_pasizmaksa">Baking:</string>
+    <string name="teksts_poga_dzest">Delete</string>
+    <string name="teksts_poga_saglabat">Save</string>
+    <string name="teksts_poga_atcelt">Cancel</string>
+    <string name="teksts_poga_brivdiena">Holiday</string>
+    <string name="teksts_poga_darbadiena">Workday</string>
+    <string name="teksts_poga_ievadit_pieprasijumu">Input demand</string>
+    <string name="teksts_poga_apskatit_vesturi">View demand history</string>
+    <string name="teksts_kolonna_pieprasijuma_id">Demand_id</string>
+    <string name="teksts_kolonna_datums">Date</string>
+    <string name="teksts_kolonna_pieprasijums">Demand</string>
+    <string name="teksts_kolonna_prognoze">Prognosis</string>
+    <string name="teksts_kolonna_darbadiena">Work_d</string>
+    <string name="teksts_pardotais_apjoms">Amount sold</string>
+    <string name="teksts_ieguta_pelna">Profit earned</string>
+    <string name="teksts_algoritma_precizitate">Algorithm accuracy</string>
 </resources>

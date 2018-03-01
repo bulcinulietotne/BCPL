@@ -1,12 +1,26 @@
 package bulcina.bcpl;
 
 
+import android.Manifest;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Build;
+import android.os.Environment;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+import java.nio.channels.FileChannel;
+
+import static android.content.ContentValues.TAG;
 
 
 public class BulcinaDatabaseHelper extends SQLiteOpenHelper{
@@ -279,6 +293,177 @@ public class BulcinaDatabaseHelper extends SQLiteOpenHelper{
         return db.rawQuery(strVaic, null);
     }
 
+    //parskata metodes
+
+    public double getBulcinasPelnu(int bulcina_id){
+        double pelna;
+        double pardotaisApjoms = 0;
+        double cena;
+        double pieprasijums;
+        double prognoze;
+
+        Cursor cb = getBulcina(bulcina_id);
+        cb.moveToFirst();
+        cena= cb.getDouble(cb.getColumnIndexOrThrow(BULCINA_COLUMN_REALIZACIJA));
+
+
+        Cursor cp = getBulcinasPieprasijumu(bulcina_id);
+
+        if(cp.getCount()==0){
+            return 0;
+        }
+
+        cp.moveToFirst();
+
+        do{
+            pieprasijums = cp.getDouble(cp.getColumnIndexOrThrow(PIEPRASIJUMS_COLUMN_PIEPRASIJUMS));
+            prognoze = cp.getDouble(cp.getColumnIndexOrThrow(PIEPRASIJUMS_COLUMN_PROGNOZE));
+
+            if(pieprasijums >= prognoze){
+                pardotaisApjoms = pardotaisApjoms + prognoze;
+            }
+            else{
+                pardotaisApjoms = pardotaisApjoms + pieprasijums;
+            }
+
+        }while(cp.moveToNext());
+
+
+        pelna = cena * pardotaisApjoms;
+
+        cp.close();
+        cb.close();
+
+        return pelna;
+
+    }
+    public double getBulcinasApjoms(int bulcina_id){
+        double pardotaisApjoms = 0;
+        double pieprasijums;
+        double prognoze;
+
+        Cursor cp = getBulcinasPieprasijumu(bulcina_id);
+
+        if(cp.getCount()==0){
+            return 0;
+        }
+
+        cp.moveToFirst();
+
+        do{
+            pieprasijums = cp.getDouble(cp.getColumnIndexOrThrow(PIEPRASIJUMS_COLUMN_PIEPRASIJUMS));
+            prognoze = cp.getDouble(cp.getColumnIndexOrThrow(PIEPRASIJUMS_COLUMN_PROGNOZE));
+
+            if(pieprasijums >= prognoze){
+                pardotaisApjoms = pardotaisApjoms + prognoze;
+            }
+            else{
+                pardotaisApjoms = pardotaisApjoms + pieprasijums;
+            }
+
+        }while(cp.moveToNext());
+
+
+        return pardotaisApjoms;
+    }
+
+    public double getPrognozesPrecizitati(int bulcina_id){
+        double [] precizitate;
+        double prognoze;
+        double pieprasijums;
+        double videjaPrecizitate = 0;
+        int i = 0;
+
+        Cursor cp = getBulcinasPieprasijumu(bulcina_id);
+
+        if(cp.getCount()==0){
+            return 0;
+        }
+
+        cp.moveToFirst();
+
+        precizitate = new double[cp.getCount()];
+
+        Log.d("BCPL","Vidējais=" + cp.getCount() );
+        do{
+            prognoze = cp.getDouble(cp.getColumnIndexOrThrow(PIEPRASIJUMS_COLUMN_PROGNOZE));
+            Log.d("BCPL","Prognoze = " + prognoze) ;
+            pieprasijums = cp.getDouble(cp.getColumnIndexOrThrow(PIEPRASIJUMS_COLUMN_PIEPRASIJUMS));
+            Log.d("BCPL","Peiprasij = " + pieprasijums );
+            if(pieprasijums > prognoze){
+                precizitate[i] = Math.round(100 - (Math.abs(pieprasijums - prognoze)/pieprasijums)*100);
+            }
+            else{
+                precizitate[i] = Math.round(100 - (Math.abs(prognoze - pieprasijums)/prognoze)*100);
+            }
+            Log.d("BCPL","Precizit = " + precizitate[i] );
+            i++;
+
+        }while(cp.moveToNext());
+
+        for(i = 0; i<cp.getCount(); i++){
+            videjaPrecizitate +=precizitate[i];
+        }
+        videjaPrecizitate = videjaPrecizitate/cp.getCount();
+        return videjaPrecizitate;
+    }
+
+    // bulcinas datu bazes eksportesana uz arejo atminu
+    public boolean exportDB (Context context){
+        try {
+            String currentDBPath = context.getDatabasePath(DATABASE_NAME).getPath();
+            String exportFileName = Environment.getExternalStorageDirectory() + "/" + DATABASE_NAME;
+            File dbFile = new File(currentDBPath);
+            FileInputStream fis = new FileInputStream(dbFile);
+            OutputStream output = new FileOutputStream(exportFileName);
+
+            byte[] buffer = new byte[1024];
+            int length;
+            while((length = fis.read(buffer)) > 0){
+                output.write(buffer, 0, length);
+            }
+
+            output.flush();
+            output.close();
+            fis.close();
+        }
+        catch (Exception e){
+            Log.e("BCPL","Kluda DB eksportesana",e);
+            return false;
+        }
+        return true;
+    }
+
+    // bulcinas datu bazes importesana no arejas atminas
+    public boolean importDB (Context context){
+        try {
+            File bulcinaDB = new File(Environment.getExternalStorageDirectory() + "/" + DATABASE_NAME );
+            if(!bulcinaDB.exists()){
+                return false;
+            }
+
+            String currentDBPath = context.getDatabasePath(DATABASE_NAME).getPath();
+            String importFileName = Environment.getExternalStorageDirectory() + "/" + DATABASE_NAME;
+            File dbFile = new File(importFileName);
+            FileInputStream fis = new FileInputStream(dbFile);
+            OutputStream output = new FileOutputStream(currentDBPath);
+
+            byte[] buffer = new byte[1024];
+            int length;
+            while((length = fis.read(buffer)) > 0){
+                output.write(buffer, 0, length);
+            }
+
+            output.flush();
+            output.close();
+            fis.close();
+        }
+        catch (Exception e){
+            Log.e("BCPL","Kluda DB importesana",e);
+            return false;
+        }
+        return true;
+    }
 
     public double prognozetPieprasijumu(int bulcina_id, int darbadiena){
         double prognoze;
@@ -291,6 +476,8 @@ public class BulcinaDatabaseHelper extends SQLiteOpenHelper{
         double ctr;
         double cl;
         double pa;
+        double samazinat;
+        double palielinat;
 
         Cursor cp = getBulcinasPieprasijumuSezona(bulcina_id, darbadiena);
 
@@ -339,7 +526,18 @@ public class BulcinaDatabaseHelper extends SQLiteOpenHelper{
         //testēšana
         //Log.d("BCPL","Z=" + NormalCDFInverse(pa) );
 
+        // paliks ka ieprieks ja 0.1 < pa < 0.9
         prognoze = videjais+standartnovirze*NormalCDFInverse(pa);
+
+        // savadak rekina marginalas vertibas un rekomende citu prognozi
+        if (pa <= 0.1) {
+            palielinat = 50*pa;
+            prognoze = palielinat*videjais+standartnovirze*NormalCDFInverse(pa);
+        }
+        else if (pa >= 0.9){
+            samazinat = (1-pa)*2;
+            prognoze = samazinat*videjais+standartnovirze*NormalCDFInverse(pa);
+        }
 
         //testēšana
         //Log.d("BCPL","Prognoze=" + prognoze );

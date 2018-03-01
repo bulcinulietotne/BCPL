@@ -7,7 +7,12 @@
     <string name="title_bulcinas_redigesana">Bulciņas rediģēšana</string>
     <string name="title_pieprasijuma_ievade">Ievadiet pieprasījumu</string>
     <string name="title_pieprasijuma_vesture">Pieprasījuma vēsture</string>
-    
+    <string name="title_bulcinu_parskats">Bulciņu pārskats</string>
+
+    <string name="appbar_item_export">Eksportēt</string>
+    <string name="appbar_item_import">Importēt</string>
+    <string name="appbar_item_parskats">Pārskats</string>
+
     <string name="dialoga_teksts_bulcinas_dzesana">Vai tiešām vēlaties dzēst bulciņu?</string>
     <string name="dialoga_teksts_bulcinas_dzesana_apstiprinajums">Bulcinas dzēšana izdzēsīs visus tās pieprasījuma ierakstus!</string>
     <string name="dialoga_teksts_pieprasijuma_dzesana">Vai tiešām vēlaties izdzēst pieprasījuma ierakstu?</string>
@@ -22,6 +27,10 @@
     <string name="pazinojums_pieprasijums_izdzests">Pieprasījuma ieraksts tika izdzēsts</string>
     <string name="pazinojums_pieprasijums_ievade">Pieprasījuma ievade ir veiksmīga</string>
     <string name="pazinojums_pieprasijuma_vesture_izdzesta">Pieprasījuma vēsture tika izdzēsta</string>
+    <string name="pazinojums_eksportesana">Eksportēšana ir veiksmīga!</string>
+    <string name="pazinojums_eksportesana_neveiksmiga">Eksportēšana ir neveiksmīga!</string>
+    <string name="pazinojums_importesana">Importēšana ir veiksmīga!</string>
+    <string name="pazinojums_importesana_neveiksmiga">Importēšana ir neveiksmīga!</string>
     
     <string name="prognoze_nav_pietiekamu_datu">Nav pietiekamu datu</string>
     <string name="prognoze_nav_ieteicams_cept">Nav ieteicams cept</string>
@@ -55,4 +64,7 @@
     <string name="teksts_kolonna_pieprasijums">Piepr</string>
     <string name="teksts_kolonna_prognoze">Progn</string>
     <string name="teksts_kolonna_darbadiena">Darbad</string>
+    <string name="teksts_pardotais_apjoms">Pārdotais apjoms</string>
+    <string name="teksts_ieguta_pelna">Iegūtā peļņa</string>
+    <string name="teksts_algoritma_precizitate">Algoritma precizitāte</string>
 </resources>
