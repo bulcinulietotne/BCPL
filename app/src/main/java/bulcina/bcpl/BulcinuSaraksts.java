@@ -62,7 +62,7 @@ public class BulcinuSaraksts extends AppCompatActivity {
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
-        boolean permission = isStoragePermissionGranted();
+        boolean permission;
         switch (item.getItemId()){
             case R.id.action_add:
                 intent = new Intent(this, JaunaBulcina.class);
@@ -73,6 +73,7 @@ public class BulcinuSaraksts extends AppCompatActivity {
                 startActivity(intent);
                 return true;
             case R.id.action_export:
+                permission = isStoragePermissionGranted();
                 if (permission){
                     if(db.exportDB(getApplicationContext())){
                         Toast toast = Toast.makeText(this,getString(R.string.pazinojums_eksportesana),Toast.LENGTH_SHORT);
@@ -85,6 +86,7 @@ public class BulcinuSaraksts extends AppCompatActivity {
                 }
                 return true;
             case R.id.action_import:
+                permission = isStoragePermissionGranted();
                 if(permission){
                     if(db.importDB(getApplicationContext())){
                         Toast toast = Toast.makeText(this,getString(R.string.pazinojums_importesana),Toast.LENGTH_SHORT);
