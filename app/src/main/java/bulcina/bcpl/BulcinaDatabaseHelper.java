@@ -465,6 +465,32 @@ public class BulcinaDatabaseHelper extends SQLiteOpenHelper{
         return true;
     }
 
+    //bulcinu datu bazes backup veidosana
+    public boolean backupDB (Context context){
+        try {
+            String currentDBPath = context.getDatabasePath(DATABASE_NAME).getPath();
+            String backupFileName = Environment.getExternalStorageDirectory() + "/BCPL_backup/" + DATABASE_NAME;
+            File dbFile = new File(currentDBPath);
+            FileInputStream fis = new FileInputStream(dbFile);
+            OutputStream output = new FileOutputStream(backupFileName);
+
+            byte[] buffer = new byte[1024];
+            int length;
+            while((length = fis.read(buffer)) > 0){
+                output.write(buffer, 0, length);
+            }
+
+            output.flush();
+            output.close();
+            fis.close();
+        }
+        catch (Exception e){
+            Log.e("BCPL","Kluda DB backup veidosana",e);
+            return false;
+        }
+        return true;
+    }
+
     public double prognozetPieprasijumu(int bulcina_id, int darbadiena){
         double prognoze;
         double standartnovirze;
