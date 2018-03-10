@@ -114,5 +114,12 @@ public class PieprasijumaVesture extends AppCompatActivity{
         adapter = new PieprasijumsCursorAdapter(this, R.layout.pieprasijuma_vesture_row,cursor,0);
         list.setAdapter(adapter);
     }
+    @Override
+    public void onBackPressed() {
+        // TODO Auto-generated method stub
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_out,
+                R.anim.slide_in);
+    }
 
 }

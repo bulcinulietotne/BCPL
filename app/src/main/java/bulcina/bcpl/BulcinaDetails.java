@@ -11,6 +11,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -27,6 +29,9 @@ public class BulcinaDetails extends AppCompatActivity{
     private TextView tvNerealizetais;
     private Button btnIevaditPieprasijumu;
     private Button btnApskatitPieprasijumaVesturi;
+    private TextView tvPasizmaksaLabel;
+    private TextView tvRealizacijaLabel;
+    private TextView tvNerealizetaisLabel;
 
     BulcinaDatabaseHelper db;
     Cursor cursor;
@@ -34,6 +39,7 @@ public class BulcinaDetails extends AppCompatActivity{
     Bundle bundle;
     Intent intent;
     int bulc_id;
+    Animation move_up_button_anim, move_down_button_anim;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +55,15 @@ public class BulcinaDetails extends AppCompatActivity{
         tvNerealizetais = findViewById(R.id.bulc_det_tv_nerealizetais);
         btnIevaditPieprasijumu = findViewById(R.id.bulc_det_btn_ievadit_piepr);
         btnApskatitPieprasijumaVesturi = findViewById(R.id.bulc_det_btn_apskatit_piepr_vesturi);
+        tvNerealizetaisLabel = findViewById(R.id.bulc_det_tv_nerealizetais_label);
+        tvPasizmaksaLabel = findViewById(R.id.bulc_det_tv_pasizmaksa_label);
+        tvRealizacijaLabel = findViewById(R.id.bulc_det_tv_realizacija_label);
+
+        move_up_button_anim = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.move);
+        move_down_button_anim = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.move_down);
+
+        startSlideUpAnimation();
+        startSlideDownAnimation();
 
         btnIevaditPieprasijumu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,6 +82,7 @@ public class BulcinaDetails extends AppCompatActivity{
                 intent = new Intent(getApplicationContext(), PieprasijumaVesture.class);
                 intent.putExtra("bulc_id", bulc_id);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
             }
         });
 
@@ -109,6 +125,7 @@ public class BulcinaDetails extends AppCompatActivity{
         tvPasizmaksa.setText(strPasizmaksa);
         tvRealizacija.setText(strRealizacija);
         tvNerealizetais.setText(strNerealizetais);
+
     }
 
     @Override
@@ -123,6 +140,7 @@ public class BulcinaDetails extends AppCompatActivity{
             intent = new Intent(getApplicationContext(), JaunaBulcina.class);
             intent.putExtra("bulc_id", bulc_id);
             startActivity(intent);
+            overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
             return true;
         }
         else{
@@ -138,4 +156,26 @@ public class BulcinaDetails extends AppCompatActivity{
         return super.onOptionsItemSelected(item);
     }
 
+    public void startSlideUpAnimation (){
+        btnApskatitPieprasijumaVesturi.startAnimation(move_up_button_anim);
+        btnIevaditPieprasijumu.startAnimation(move_up_button_anim);
+        tvBulcNos.startAnimation(move_up_button_anim);
+        tvNerealizetais.startAnimation(move_up_button_anim);
+        tvPasizmaksa.startAnimation(move_up_button_anim);
+        tvRealizacija.startAnimation(move_up_button_anim);
+        tvPasizmaksaLabel.startAnimation(move_up_button_anim);
+        tvRealizacijaLabel.startAnimation(move_up_button_anim);
+        tvNerealizetaisLabel.startAnimation(move_up_button_anim);
+
+    }
+    public void startSlideDownAnimation (){
+        ivAttels.startAnimation(move_down_button_anim);
+
+
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
+    }
 }
