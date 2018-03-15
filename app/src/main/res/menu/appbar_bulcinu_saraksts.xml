@@ -17,4 +17,8 @@
         android:id="@+id/action_import"
         android:title="@string/appbar_item_import"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/action_atvert_help"
+        android:title="@string/appbar_item_help"
+        app:showAsAction="never" />
 </menu>

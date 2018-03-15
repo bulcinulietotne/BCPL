@@ -53,6 +53,10 @@ public class BulcinuSaraksts extends AppCompatActivity {
     public void onResume(){
         super.onResume();
         refreshList();
+        boolean permission = isStoragePermissionGranted();
+        if (permission){
+            db.backupDB(this);
+        }
     }
 
     public void refreshList(){
@@ -98,6 +102,10 @@ public class BulcinuSaraksts extends AppCompatActivity {
                     }
                 }
                 refreshList();
+                return true;
+            case R.id.action_atvert_help:
+                intent = new Intent(this, Help.class);
+                startActivity(intent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

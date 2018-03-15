@@ -1,26 +1,20 @@
 package bulcina.bcpl;
 
 
-import android.Manifest;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.os.Build;
 import android.os.Environment;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
-import java.nio.channels.FileChannel;
-
-import static android.content.ContentValues.TAG;
+import java.util.Calendar;
+import java.util.concurrent.TimeUnit;
 
 
 public class BulcinaDatabaseHelper extends SQLiteOpenHelper{
@@ -468,27 +462,57 @@ public class BulcinaDatabaseHelper extends SQLiteOpenHelper{
     //bulcinu datu bazes backup veidosana
     public boolean backupDB (Context context){
         try {
-            String currentDBPath = context.getDatabasePath(DATABASE_NAME).getPath();
             String backupFileName = Environment.getExternalStorageDirectory() + "/BCPL_backup/" + DATABASE_NAME;
-            File dbFile = new File(currentDBPath);
-            FileInputStream fis = new FileInputStream(dbFile);
-            OutputStream output = new FileOutputStream(backupFileName);
+            File backupFile = new File(backupFileName);
+            if (backupFile.exists()){
+                long msDiff = Calendar.getInstance().getTimeInMillis() - backupFile.lastModified();
+                long daysDiff = TimeUnit.MILLISECONDS.toDays(msDiff);
+                //testesana
+                //Log.d("datumu atskiriba=", Long.toString(daysDiff));
+                if (daysDiff>=7){
+                    String currentDBPath = context.getDatabasePath(DATABASE_NAME).getPath();
+                    File dbFile = new File(currentDBPath);
+                    FileInputStream fis = new FileInputStream(dbFile);
+                    OutputStream output = new FileOutputStream(backupFileName);
 
-            byte[] buffer = new byte[1024];
-            int length;
-            while((length = fis.read(buffer)) > 0){
-                output.write(buffer, 0, length);
+                    byte[] buffer = new byte[1024];
+                    int length;
+                    while((length = fis.read(buffer)) > 0){
+                        output.write(buffer, 0, length);
+                    }
+
+                    output.flush();
+                    output.close();
+                    fis.close();
+                    return true;
+                }
             }
+            else {
+                String backupFileDir = Environment.getExternalStorageDirectory() + "/BCPL_backup/";
+                File backupDir = new File(backupFileDir);
+                backupDir.mkdir();
+                String currentDBPath = context.getDatabasePath(DATABASE_NAME).getPath();
+                File dbFile = new File(currentDBPath);
+                FileInputStream fis = new FileInputStream(dbFile);
+                OutputStream output = new FileOutputStream(backupFileName);
 
-            output.flush();
-            output.close();
-            fis.close();
+                byte[] buffer = new byte[1024];
+                int length;
+                while((length = fis.read(buffer)) > 0){
+                    output.write(buffer, 0, length);
+                }
+
+                output.flush();
+                output.close();
+                fis.close();
+                return true;
+            }
         }
         catch (Exception e){
             Log.e("BCPL","Kluda DB backup veidosana",e);
             return false;
         }
-        return true;
+        return false;
     }
 
     public double prognozetPieprasijumu(int bulcina_id, int darbadiena){
@@ -504,38 +528,9 @@ public class BulcinaDatabaseHelper extends SQLiteOpenHelper{
         double pa;
         double samazinat;
         double palielinat;
+        int skaits;
 
         Cursor cp = getBulcinasPieprasijumuSezona(bulcina_id, darbadiena);
-
-        if (cp.getCount()==0){
-            return 0;
-        }
-
-        cp.moveToFirst();
-
-        summa = cp.getDouble(cp.getColumnIndexOrThrow(PIEPRASIJUMS_COLUMN_PIEPRASIJUMS));
-        while (cp.moveToNext()){
-            summa = summa + cp.getDouble(cp.getColumnIndexOrThrow(PIEPRASIJUMS_COLUMN_PIEPRASIJUMS));
-        }
-
-        videjais = summa/cp.getCount();
-
-        //testēšana
-        //Log.d("BCPL","Vidējais=" + videjais );
-
-        cp.moveToFirst();
-
-        standartnovirze = Math.pow(cp.getInt(cp.getColumnIndexOrThrow(PIEPRASIJUMS_COLUMN_PIEPRASIJUMS)) - videjais, 2);
-
-        while (cp.moveToNext()){
-            standartnovirze = standartnovirze + Math.pow(cp.getDouble(cp.getColumnIndexOrThrow(PIEPRASIJUMS_COLUMN_PIEPRASIJUMS)) - videjais, 2);
-        }
-
-        standartnovirze = Math.sqrt(standartnovirze/(cp.getCount()-1));
-
-        //testēšana
-        //Log.d("BCPL","Standartnovirze=" + standartnovirze );
-
         Cursor cb = getBulcina(bulcina_id);
 
         cb.moveToFirst();
@@ -549,23 +544,76 @@ public class BulcinaDatabaseHelper extends SQLiteOpenHelper{
 
         pa = ctr/(cl+ctr);
 
-        //testēšana
+        //Vai nu atgriez nulli, vai ari iziet no nulles cikla, ja nav datu, tacu ir izdevigi
+        // uznemties neveiksmes risku. Lielums 100 (simts) norada ka jarada nevis
+        // vienkarsi simts bulcinjas bet simts VIENIBAS - 1)kastes, 2)vagoni, 3)ari bulcinjas
+        // atkariba kados apjomos reali razo.
+        if (cp.getCount()==0){
+            if (pa>=0.70){
+                return 100;
+            }
+            return 0;
+        }
+
+        cp.moveToFirst();
+
+        summa = cp.getDouble(cp.getColumnIndexOrThrow(PIEPRASIJUMS_COLUMN_PIEPRASIJUMS));
+        while (cp.moveToNext()){
+            summa = summa + cp.getDouble(cp.getColumnIndexOrThrow(PIEPRASIJUMS_COLUMN_PIEPRASIJUMS));
+        }
+
+        skaits = cp.getCount();
+        videjais = summa/skaits;
+
+        //testešana
+        //Log.d("BCPL","Videjais=" + videjais );
+
+        cp.moveToFirst();
+
+        standartnovirze = Math.pow(cp.getInt(cp.getColumnIndexOrThrow(PIEPRASIJUMS_COLUMN_PIEPRASIJUMS)) - videjais, 2);
+
+        while (cp.moveToNext()){
+            standartnovirze = standartnovirze + Math.pow(cp.getDouble(cp.getColumnIndexOrThrow(PIEPRASIJUMS_COLUMN_PIEPRASIJUMS)) - videjais, 2);
+        }
+
+        // Jo nevar dalit ar nulli, kad skaits skaits == 1
+        if (skaits==1){
+            standartnovirze = 0;
+        }
+        else {
+            standartnovirze = Math.sqrt(standartnovirze/(skaits-1));
+        }
+
+        //testešana
+        //Log.d("BCPL","Standartnovirze=" + standartnovirze );
+
+        //testešana
         //Log.d("BCPL","Z=" + NormalCDFInverse(pa) );
 
-        // paliks ka ieprieks ja 0.1 < pa < 0.9
-        prognoze = videjais+standartnovirze*NormalCDFInverse(pa);
+        // Rekina ne tikai prognozi, bet nem vera ari ekonomisko izdevigumu
+        if (pa >= 0.9) {
+            palielinat = 5*pa;
 
-        // savadak rekina marginalas vertibas un rekomende citu prognozi
-        if (pa <= 0.1) {
-            palielinat = 50*pa;
             prognoze = palielinat*videjais+standartnovirze*NormalCDFInverse(pa);
         }
-        else if (pa >= 0.9){
-            samazinat = (1-pa)*2;
-            prognoze = samazinat*videjais+standartnovirze*NormalCDFInverse(pa);
+        else if (pa <= 0.1){
+            double novirze = standartnovirze*NormalCDFInverse(pa);
+            if (novirze>=0){
+                samazinat = 5*pa;
+                prognoze = samazinat*videjais+standartnovirze*NormalCDFInverse(pa);
+            }
+            else {
+                samazinat = 0.9;
+                prognoze = samazinat*(videjais+standartnovirze*NormalCDFInverse(pa));
+            }
+
         }
 
-        //testēšana
+        else {
+            prognoze = videjais+standartnovirze*NormalCDFInverse(pa);
+        }
+
+        //testešana
         //Log.d("BCPL","Prognoze=" + prognoze );
 
         cp.close();

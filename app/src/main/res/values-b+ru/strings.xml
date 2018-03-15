@@ -8,10 +8,12 @@
     <string name="title_pieprasijuma_ievade">Введите спрос</string>
     <string name="title_pieprasijuma_vesture">История спроса</string>
     <string name="title_bulcinu_parskats">Обзор булочек</string>
+    <string name="title_help">Помощь</string>
 
     <string name="appbar_item_export">Экспортировать</string>
     <string name="appbar_item_import">Импортировать</string>
     <string name="appbar_item_parskats">Обзор</string>
+    <string name="appbar_item_help">Помощь</string>
 
     <string name="dialoga_teksts_bulcinas_dzesana">Вы уверены, что хотите удалить булочку?</string>
     <string name="dialoga_teksts_bulcinas_dzesana_apstiprinajums">Удаления булочки стирает все данные спроса!</string>
@@ -42,6 +44,26 @@
     <string name="kluda_nerealizetais_lielaks_par_pasizmaksu">Булочки расходы выпекания должны быть больше, чем избыточная цена!</string>
     <string name="kluda_nepareiza_nauda">Было введено неправильная денежная стоимость!</string>
     <string name="kluda_nav_pieprasijuma">Спрос не может быть пустым!</string>
+
+    <string name="help_jauajums_1">1. Приложение может устанавливать и другие языки?</string>
+    <string name="help_jauajums_2">2. Возможно ли восстановить данные удаленной булочки?</string>
+    <string name="help_jauajums_3">3. Можно ли изменить изображение булочки?</string>
+    <string name="help_jauajums_4">4. Где экспортируются данные?</string>
+    <string name="help_jauajums_5">5. Что означает слово “импорт”? Где будут импортироваться данные?</string>
+    <string name="help_jauajums_6">6. Сколько типы булочки  можно добавить?</string>
+    <string name="help_jauajums_7">7. Где я могу просмотреть историю спросов?</string>
+    <string name="help_jauajums_8">8. Нужно ли вводить данные ежедневно?</string>
+    <string name="help_jauajums_9">9.Нужно регулярное подключение к Интернету?</string>
+
+    <string name="help_atbilde_1">Да, изменение русского языка на английский или латышский в настройках устройства сделает язык приложения таким же, как и на языке устройства.</string>
+    <string name="help_atbilde_2">Можно восстановить данные, если они были ранее экспортированы. В этом случае вы должны нажать кнопку «импорт» в главном меню. Данные будут восстановлены в состоянии, в котором они были экспортированы.</string>
+    <string name="help_atbilde_3">Да, это возможно, нажав на кнопку карандаша в правом верхнем углу, а затем щелкнув по изображению, которое позволит вам выбрать- другое или то же изображение из доступной библиотеки изображений.</string>
+    <string name="help_atbilde_4">Данные экспортируются в файл bulcina.db, хранящийся во внешнем каталоге хранилища. Это каталог, в котором хранятся данные, которые могут потребоваться для доступа различными приложениями, и которые не будут удалены, если приложение будет удалено. В этом каталоге хранятся, например, изображения и файлы для загрузки. Внешняя память может быть, например, SD-картой.</string>
+    <string name="help_atbilde_5">Данные импортируются из файла bulcina.db, который должен находиться во внешнем каталоге хранилища. Если файл отсутствует в каталоге, отображается сообщение об ошибке без сбоев. Файл импорта - это тот же файл, который создается с помощью функции экспорта. Чтобы импортировать данные с одного устройства на другое, пользователь должен перенести файл первого устройства из каталога внешней памяти в соответствующий каталог на другом устройстве.</string>
+    <string name="help_atbilde_6">Неограниченное количество.</string>
+    <string name="help_atbilde_7">Нажмите на булочку а затем нажмите кнопку “просматривать историю спроса”.</string>
+    <string name="help_atbilde_8">Да, рекомендуется вводить данные каждый день, чтобы алгоритм мог точно рассчитать требуемое количество выпечки булочки.</string>
+    <string name="help_atbilde_9">Нет, подключение к интернету не требуется.</string>
 
     <string name="teksts_pieprasijums">Спрос</string>
     <string name="teksts_datums">Дата</string>

@@ -8,10 +8,12 @@
     <string name="title_pieprasijuma_ievade">Enter demand</string>
     <string name="title_pieprasijuma_vesture">Demand history</string>
     <string name="title_bulcinu_parskats">Pastry overview</string>
+    <string name="title_help">Help</string>
 
     <string name="appbar_item_export">Export</string>
     <string name="appbar_item_import">Import</string>
     <string name="appbar_item_parskats">Overview</string>
+    <string name="appbar_item_help">Help</string>
 
     <string name="dialoga_teksts_bulcinas_dzesana">Are you sure you want to delete the sweet roll?</string>
     <string name="dialoga_teksts_bulcinas_dzesana_apstiprinajums">Sweet roll deletion will erase all of its demand entries!</string>
@@ -42,6 +44,26 @@
     <string name="kluda_nerealizetais_lielaks_par_pasizmaksu">Baking costs have to be higher than the surplus price!</string>
     <string name="kluda_nepareiza_nauda">Wrong money value!</string>
     <string name="kluda_nav_pieprasijuma">Demand can not be empty!</string>
+
+    <string name="help_jauajums_1">1. Is it possible to switch language to other language in this app?</string>
+    <string name="help_jauajums_2">2. Is it possible to restore the deleted sweet roll data?</string>
+    <string name="help_jauajums_3">3. Is it possible to change the sweet roll image?</string>
+    <string name="help_jauajums_4">4. Where are the data exported?</string>
+    <string name="help_jauajums_5">5. What does the word "import" mean? Where will the data be imported?</string>
+    <string name="help_jauajums_6">6. How much sweet rolls can be added?</string>
+    <string name="help_jauajums_7">7. Where can I see the demand history?</string>
+    <string name="help_jauajums_8">8. Do I need to enter data every day?</string>
+    <string name="help_jauajums_9">9. Does the app require a regular Internet connection?</string>
+
+    <string name="help_atbilde_1">Yes, the language of the application will be the same as the device language when changing device settings in Latvian, English or Russian.</string>
+    <string name="help_atbilde_2">Yes, it is possible to restore data if they were previously exported. In this case, you must press the "import" button in the main menu. Data will be restored to the state in which they were exported.</string>
+    <string name="help_atbilde_3">Yes, it is possible by clicking on the button with pencil in the upper right corner and then clicking on the image that will allow you to select another or the same image from the available image library.</string>
+    <string name="help_atbilde_4">The data is exported to the file bulcina.db stored in the external storage directory. This is a directory that stores data that may need to be accessed by different applications and which will not be deleted if the app is deleted. This directory stores, for example, images and download files. External memory can be for example an SD card.</string>
+    <string name="help_atbilde_5">The data is imported from the file bulcina.db, which must be in the external storage directory. If the file is not in the directory, a failure-free import message is displayed. The import file is the same file that is created with the export function. To import data from one device to another, the user must move the file of the first device from the external memory directory to the corresponding directory on the other device.</string>
+    <string name="help_atbilde_6">Unlimited.</string>
+    <string name="help_atbilde_7">Clicking on the sweet roll and then pressing the "view demand history" button.</string>
+    <string name="help_atbilde_8">Yes, it is advisable to enter accurate information everyday, what can be seen in monthly reports, and then algorithm can accurately calculate the amount of sweet rolls needed.</string>
+    <string name="help_atbilde_9">No, no internet connection required.</string>
 
     <string name="teksts_pieprasijums">Demand</string>
     <string name="teksts_datums">Date</string>

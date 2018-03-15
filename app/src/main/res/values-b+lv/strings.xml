@@ -8,10 +8,12 @@
     <string name="title_pieprasijuma_ievade">Ievadiet pieprasījumu</string>
     <string name="title_pieprasijuma_vesture">Pieprasījuma vēsture</string>
     <string name="title_bulcinu_parskats">Bulciņu pārskats</string>
+    <string name="title_help">Palīdzība</string>
 
     <string name="appbar_item_export">Eksportēt</string>
     <string name="appbar_item_import">Importēt</string>
     <string name="appbar_item_parskats">Pārskats</string>
+    <string name="appbar_item_help">Palīdzība</string>
 
     <string name="dialoga_teksts_bulcinas_dzesana">Vai tiešām vēlaties dzēst bulciņu?</string>
     <string name="dialoga_teksts_bulcinas_dzesana_apstiprinajums">Bulcinas dzēšana izdzēsīs visus tās pieprasījuma ierakstus!</string>
@@ -42,6 +44,26 @@
     <string name="kluda_nerealizetais_lielaks_par_pasizmaksu">Bulciņas cepšanas izmaksām jābūt lielākām par pārpalikuma cenu</string>
     <string name="kluda_nepareiza_nauda">Ievadīta nepareiza naudas vērtība!</string>
     <string name="kluda_nav_pieprasijuma">Pieprasījums nevar būt tukšs</string>
+
+    <string name="help_jauajums_1">1. Vai lietotnei ir iespējams uzlikt citas valodas?</string>
+    <string name="help_jauajums_2">2. Vai izdzēstos datus par bulciņu ir iespējams atjaunot?</string>
+    <string name="help_jauajums_3">3. Vai ir iespējams mainīt bulciņas attēlu?</string>
+    <string name="help_jauajums_4">4. Uz kurieni tiek eksportēti dati?</string>
+    <string name="help_jauajums_5">5. Ko nozīmē vārds “importēt”? No kurienes dati tiks importēti?</string>
+    <string name="help_jauajums_6">6. Cik maksimāli var pievienot bulciņu veidus?</string>
+    <string name="help_jauajums_7">7. Kur var redzēt pieprasījumu vēsturi? </string>
+    <string name="help_jauajums_8">8. Vai pieprasījuma dati obligāti ir jāievada katru dienu?</string>
+    <string name="help_jauajums_9">9. Vai ir nepieciešams regulārs interneta savienojums?</string>
+
+    <string name="help_atbilde_1">Jā, nomainot ierīces iestatījumos latviešu valodu uz angļu vai krievu valodu, tad attiecīgi lietotnes valoda būs tāda pati, kā ierīces valoda.</string>
+    <string name="help_atbilde_2">Ir iespējams atjaunot datus, ja tie iepriekš tika eksportēti. Tādā gadījumā ir jānospiež galvenajā izvēlnē poga “import”. Dati tiks atjaunoti tādā stāvoklī, kādā tie tika eksportēti.</string>
+    <string name="help_atbilde_3">Jā, ir iespējams, uzspiežot labajā augšējā stūrī uz rediģēšanas pogu “zīmulis” un tad uzspiežot uz attēla, kas ļaus izvēlēties citu vai to pašu attēlu no pieejamās attēlu bibliotēkas.</string>
+    <string name="help_atbilde_4">Dati tiek eksportēti uz failu bulcina.db, kas glabājas arējās atmiņas (external storage) katalogā. Tas ir katalogs, kurā glabā datus, kuriem var būt vajadzīgs piekļūt ar dažādām lietotnēm, un kurus neizdzēš, ja tiek izdzēsta lietotne. Šajā katalogā glabā, piemēram, attēlus un lejuplādētos failus. Ārējā atmiņa var būt piemēram SD karte.</string>
+    <string name="help_atbilde_5">Dati tiek importēti no faila bulcina.db, kam ir jābūt ārējās atmiņas (external storage) katalogā. Ja faila katalogā nav, tiek parādīts paziņojums par neveiksmīgu importēšanu. Importa fails ir tas pats fails, kurš tiek izveidots ar eksporta funkciju. Lai importētu datus no vienas ierīces uz citu, lietotājam pašam ir jāpārvieto pirmās ierīces eksportētais fails no ārējās atmiņas kataloga uz otras ierīces atbilstošo katalogu.</string>
+    <string name="help_atbilde_6">Neierobežots daudzums.</string>
+    <string name="help_atbilde_7">Uzspiežot uz bulciņas un tad nospiežot pogu "pieprasījum vēsture".</string>
+    <string name="help_atbilde_8">Jā, ir vēlams ievadīt katru dienu, lai būtu precīza informācija ikmēneša pārskatos un algoritms precīzi varētu sarēķināt nepieciešamo bulciņu cepšanas daudzumu.</string>
+    <string name="help_atbilde_9">Nē, nav nepieciešams interneta savienojums.</string>
     
     <string name="teksts_pieprasijums">Pieprasījums</string>
     <string name="teksts_datums">Datums</string>
