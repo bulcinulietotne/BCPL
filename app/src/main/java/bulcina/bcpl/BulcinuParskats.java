@@ -32,4 +32,12 @@ public class BulcinuParskats extends AppCompatActivity {
         adapter = new BulcinaParskatsAdapter(this, R.layout.bulcinu_parskats_row ,cursor,0);
         list.setAdapter(adapter);
     }
+
+    @Override
+    public void onBackPressed() {
+        // TODO Auto-generated method stub
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_out,
+                R.anim.slide_in);
+    }
 }

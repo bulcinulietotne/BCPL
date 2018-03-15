@@ -164,6 +164,7 @@ public class JaunaBulcina extends AppCompatActivity{
                             toast.show();
                         }
                         finish();
+                        overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
                     }
                     else{
                         if(db.addBulcina(strBulcNos,pasizmaksa,realizacija,nerealizetais,attels)){
@@ -177,6 +178,7 @@ public class JaunaBulcina extends AppCompatActivity{
                             toast.show();
                         }
                         finish();
+                        overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
                     }
                 }
                 catch (NumberFormatException nfs){
@@ -242,5 +244,12 @@ public class JaunaBulcina extends AppCompatActivity{
         return stream.toByteArray();
     }
 
+    @Override
+    public void onBackPressed() {
+        // TODO Auto-generated method stub
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_out,
+                R.anim.slide_in);
+    }
 
 }

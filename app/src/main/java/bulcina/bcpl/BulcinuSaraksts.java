@@ -41,6 +41,7 @@ public class BulcinuSaraksts extends AppCompatActivity {
                 int bulc_id = (int) id;
                 intent.putExtra("bulc_id", bulc_id);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
             }
         });
     }
@@ -71,10 +72,12 @@ public class BulcinuSaraksts extends AppCompatActivity {
             case R.id.action_add:
                 intent = new Intent(this, JaunaBulcina.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
                 return true;
             case R.id.action_atvert_parskatu:
                 intent = new Intent(this, BulcinuParskats.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
                 return true;
             case R.id.action_export:
                 permission = isStoragePermissionGranted();

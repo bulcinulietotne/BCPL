@@ -7,6 +7,7 @@
     tools:context="bulcina.bcpl.BulcinuSaraksts">
 
     <ListView
+        android:animateLayoutChanges="true"
         android:id="@+id/bulc_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
