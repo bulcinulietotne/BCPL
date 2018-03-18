@@ -31,7 +31,8 @@
         android:text="@string/teksts_poga_dzest"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dzes_dialogs_tv_zinojums" />
+        app:layout_constraintTop_toBottomOf="@+id/dzes_dialogs_tv_zinojums"
+        android:layout_marginRight="8dp" />
 
     <Button
         android:id="@+id/dzes_dialogs_btn_atcelt"
@@ -44,5 +45,6 @@
         android:text="@string/teksts_poga_atcelt"
         android:textColor="@android:color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dzes_dialogs_tv_zinojums" />
+        app:layout_constraintTop_toBottomOf="@+id/dzes_dialogs_tv_zinojums"
+        android:layout_marginLeft="8dp" />
 </android.support.constraint.ConstraintLayout>

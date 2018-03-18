@@ -22,21 +22,21 @@ public class PieprasijumsCursorAdapter extends ResourceCursorAdapter {
 
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
-        TextView tvPieprasijums_id = view.findViewById(R.id.piepr_vesture_row_tv_kolonna_pieprasijums_id);
+        //TextView tvPieprasijums_id = view.findViewById(R.id.piepr_vesture_row_tv_kolonna_pieprasijums_id);
         TextView tvDatums = view.findViewById(R.id.piepr_vesture_row_tv_kolonna_datums);
         TextView tvPieprasijums = view.findViewById(R.id.piepr_vesture_row_tv_kolonna_pieprasijums);
         TextView tvPrognoze = view.findViewById(R.id.piepr_vesture_row_tv_kolonna_prognoze);
         TextView tvDarbadiena = view.findViewById(R.id.piepr_vesture_row_tv_kolonna_darbadiena);
         //TextView tvBulcina_id = view.findViewById(R.id.piepr_vesture_row_tv_kolonna_bulcina_id);
 
-        int pieprasijums_id_index = cursor.getColumnIndexOrThrow("_id");
+        //int pieprasijums_id_index = cursor.getColumnIndexOrThrow("_id");
         int datums_index = cursor.getColumnIndexOrThrow(BulcinaDatabaseHelper.PIEPRASIJUMS_COLUMN_DATUMS);
         int pieprasijums_index = cursor.getColumnIndexOrThrow(BulcinaDatabaseHelper.PIEPRASIJUMS_COLUMN_PIEPRASIJUMS);
         int prognoze_index = cursor.getColumnIndexOrThrow(BulcinaDatabaseHelper.PIEPRASIJUMS_COLUMN_PROGNOZE);
         int darbadiena_index = cursor.getColumnIndexOrThrow(BulcinaDatabaseHelper.PIEPRASIJUMS_COLUMN_DARBADIENA);
         //int bulcina_id_index = cursor.getColumnIndexOrThrow(BulcinaDatabaseHelper.BULCINA_COLUMN_ID);
 
-        tvPieprasijums_id.setText(cursor.getString(pieprasijums_id_index));
+        //tvPieprasijums_id.setText(cursor.getString(pieprasijums_id_index));
         tvDatums.setText(timestampToLocalTime(cursor.getString(datums_index)));
         tvPieprasijums.setText(cursor.getString(pieprasijums_index));
         tvPrognoze.setText(String.valueOf(Math.round(cursor.getDouble(prognoze_index))));

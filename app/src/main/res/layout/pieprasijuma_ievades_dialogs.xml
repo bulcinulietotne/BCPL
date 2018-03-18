@@ -36,7 +36,9 @@
         android:text="@string/teksts_poga_darbadiena"
         app:layout_constraintEnd_toStartOf="@+id/piepr_ievade_dialogs_rbtn_briv"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/piepr_ievade_dialogs_et_piepr" />
+        app:layout_constraintTop_toBottomOf="@+id/piepr_ievade_dialogs_et_piepr"
+        android:layout_marginRight="4dp"
+        android:layout_marginLeft="8dp" />
 
     <RadioButton
         android:id="@+id/piepr_ievade_dialogs_rbtn_briv"
@@ -50,7 +52,9 @@
         android:text="@string/teksts_poga_brivdiena"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/piepr_ievade_dialogs_rbtn_darb"
-        app:layout_constraintTop_toBottomOf="@+id/piepr_ievade_dialogs_et_piepr" />
+        app:layout_constraintTop_toBottomOf="@+id/piepr_ievade_dialogs_et_piepr"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="4dp" />
 
     <Button
         android:id="@+id/piepr_ievade_dialogs_btn_atcelt"
@@ -63,7 +67,8 @@
         android:text="@string/teksts_poga_atcelt"
         android:textColor="@android:color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/piepr_ievade_dialogs_rbtn_darb" />
+        app:layout_constraintTop_toBottomOf="@+id/piepr_ievade_dialogs_rbtn_darb"
+        android:layout_marginLeft="8dp" />
 
     <Button
         android:id="@+id/piepr_ievade_dialogs_btn_saglabat"
@@ -76,5 +81,6 @@
         android:text="@string/teksts_poga_saglabat"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/piepr_ievade_dialogs_rbtn_briv" />
+        app:layout_constraintTop_toBottomOf="@+id/piepr_ievade_dialogs_rbtn_briv"
+        android:layout_marginRight="8dp" />
 </android.support.constraint.ConstraintLayout>

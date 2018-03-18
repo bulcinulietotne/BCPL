@@ -7,35 +7,24 @@
     android:animateLayoutChanges="true">
 
     <TextView
-        android:id="@+id/piepr_vesture_row_tv_kolonna_pieprasijums_id"
-        android:layout_width="55dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="3dp"
-        android:layout_marginTop="3dp"
-        android:fontFamily="@font/roboto"
-        android:text="Piepr_id"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/piepr_vesture_row_tv_kolonna_datums"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="5dp"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="3dp"
         android:layout_marginTop="3dp"
         android:fontFamily="@font/roboto"
         android:text="Datums"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/piepr_vesture_row_tv_kolonna_pieprasijums"
-        app:layout_constraintStart_toEndOf="@+id/piepr_vesture_row_tv_kolonna_pieprasijums_id"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="3dp" />
 
     <TextView
         android:id="@+id/piepr_vesture_row_tv_kolonna_pieprasijums"
-        android:layout_width="35dp"
+        android:layout_width="55dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="5dp"
         android:layout_marginTop="3dp"
@@ -43,11 +32,12 @@
         android:text="Piepr"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/piepr_vesture_row_tv_kolonna_prognoze"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginRight="5dp" />
 
     <TextView
         android:id="@+id/piepr_vesture_row_tv_kolonna_prognoze"
-        android:layout_width="40dp"
+        android:layout_width="67dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="5dp"
         android:layout_marginTop="3dp"
@@ -55,11 +45,12 @@
         android:text="Progn"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/piepr_vesture_row_tv_kolonna_darbadiena"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginRight="5dp" />
 
     <TextView
         android:id="@+id/piepr_vesture_row_tv_kolonna_darbadiena"
-        android:layout_width="48dp"
+        android:layout_width="58dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="3dp"
         android:layout_marginTop="3dp"
@@ -67,6 +58,7 @@
         android:text="Darbad"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginRight="3dp" />
 
 </android.support.constraint.ConstraintLayout>
